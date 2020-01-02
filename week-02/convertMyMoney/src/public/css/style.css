@@ -1,0 +1,48 @@
+*,
+*:before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+ul {
+  list-style: none;
+}
+
+.logo {
+  width: 480px;
+  max-width: 100%;
+  margin: 0 auto;
+  margin-top: 50px;
+}
+
+.logo img {
+  width: 100%;
+}
+
+/*CONTAINER*/
+.container {
+  margin: 50px auto 0 auto;
+  width: 480px;
+  max-width: 100%;
+}
+/*FORM*/
+
+.form__input {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+.form__button {
+  padding: 10px;
+  width: 100%;
+  display: block;
+}
+
+/*RESULT*/
+.result {
+  font-size: 1.2rem;
+}
