@@ -9,28 +9,28 @@ const readdir = path =>
     })
   })
 
-const isDirectory = path =>
+const isFile = path =>
   new Promise((resolve, reject) => {
     fs.stat(path, (err, stat) => {
       if (err) reject(err)
-      resolve(stat.isDirectory())
+      resolve(stat.isFile())
     })
   })
 
-const readSubDirectories = async () => {
+const readFiles = async () => {
   // const folders = []
   const files = await readdir("./")
 
-  const possibleFolders = await Promise.all(
+  const possibleFiles = await Promise.all(
     files.map(async file => {
-      const stat = await isDirectory(file)
+      const stat = await isFile(file)
       if (stat) return file
       return false
     })
   )
-  const folders = possibleFolders.filter(folder => !!folder)
+  const folders = possibleFiles.filter(folder => !!folder)
 
   console.log(folders)
 }
 
-readSubDirectories()
+readFiles()
