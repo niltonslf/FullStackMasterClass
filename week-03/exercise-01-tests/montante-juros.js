@@ -9,10 +9,6 @@ const calcMontanteJurosSimples = ({ jurosSimples }) => (
   return capital + jurosSimplesRes
 }
 
-// DEBUG
-const res = calcMontanteJurosSimples({ jurosSimples: calcJuros })(1000, 50, 1)
-console.log(res)
-
 module.exports = {
   calcMontanteJurosSimples: calcMontanteJurosSimples({
     jurosSimples: calcJuros
