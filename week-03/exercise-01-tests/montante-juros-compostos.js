@@ -4,12 +4,26 @@
  * @param {*} juros em porcentagem. Ex: para 50% fornecer 50
  * @param {*} tempo quantidade de tempo que o calculo deve ser realizado
  */
-const montanteJurosCompostos = (capital, juros, tempo) => {
+const montanteJurosCompostos = ({ extrairJuros }) => (
+  capital,
+  juros,
+  tempo
+) => {
   const jurosDecimal = juros / 100
   const montante = capital * (1 + jurosDecimal) ** tempo
-  return montante
+  return {
+    montante,
+    juros: extrairJuros(capital, montante)
+  }
+}
+
+const extrairJuros = (capital, montante) => {
+  return montante - capital
 }
 
 module.exports = {
-  montanteJurosCompostos
+  montanteJurosCompostos: montanteJurosCompostos({ extrairJuros }),
+  pure: {
+    montanteJurosCompostos
+  }
 }
