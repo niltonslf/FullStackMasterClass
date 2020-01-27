@@ -23,6 +23,7 @@ const extrairJuros = (capital, montante) => {
 
 module.exports = {
   montanteJurosCompostos: montanteJurosCompostos({ extrairJuros }),
+  extrairJuros,
   pure: {
     montanteJurosCompostos
   }
