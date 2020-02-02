@@ -1,8 +1,10 @@
 const express = require("express")
 const mongoose = require("mongoose")
 const bodyParser = require("body-parser")
-const User = require("./models/user")
 const jwt = require("jsonwebtoken")
+const cors = require("cors")
+
+const User = require("./models/user")
 const jwtSecret = "!@#$%"
 
 const app = express()
@@ -16,6 +18,7 @@ const mongo =
 const series = require("./routes/series")
 const users = require("./routes/users")
 
+app.use(cors())
 app.use(bodyParser.json())
 app.use("/series", series)
 app.use("/users", users)
