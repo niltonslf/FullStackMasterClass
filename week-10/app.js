@@ -14,9 +14,11 @@ const mongo =
   "mongodb+srv://niltonslf:mongo123@cluster0-hakdt.mongodb.net/series?retryWrites=true&w=majority"
 
 const series = require("./routes/series")
+const users = require("./routes/users")
 
 app.use(bodyParser.json())
 app.use("/series", series)
+app.use("/users", users)
 
 app.post("/auth", async (req, res) => {
   const { username, password } = req.body
