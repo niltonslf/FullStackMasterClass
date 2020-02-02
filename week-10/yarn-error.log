@@ -1,5 +1,5 @@
 Arguments: 
-  /home/niltonslf/.nvm/versions/node/v10.18.1/bin/node /usr/bin/yarn add body-parser
+  /home/niltonslf/.nvm/versions/node/v10.18.1/bin/node /usr/bin/yarn add jsonwebtoken
 
 PATH: 
   /home/niltonslf/.local/bin:/home/niltonslf/.local/bin:/home/niltonslf/.nvm/versions/node/v10.18.1/bin:/home/niltonslf/.zplugin/polaris/bin:/home/niltonslf/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
@@ -14,7 +14,7 @@ Platform:
   linux x64
 
 Trace: 
-  Error: EACCES: permission denied, unlink '/home/niltonslf/Dev/lab/FullStackMasterClass/week-10/node_modules/got/node_modules/safe-buffer/LICENSE'
+  Error: EACCES: permission denied, unlink '/home/niltonslf/Dev/lab/FullStackMasterClass/week-10/node_modules/send/node_modules/http-errors/HISTORY.md'
 
 npm manifest: 
   {

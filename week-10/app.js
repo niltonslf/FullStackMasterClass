@@ -2,6 +2,8 @@ const express = require("express")
 const mongoose = require("mongoose")
 const bodyParser = require("body-parser")
 const User = require("./models/user")
+const jwt = require("jsonwebtoken")
+const jwtSecret = "!@#$%"
 
 const app = express()
 mongoose.Promise = global.Promise
@@ -23,12 +25,28 @@ app.post("/auth", async (req, res) => {
 
   if (userDb) {
     if (userDb.password == password) {
-      res.send("ok")
+      const payload = {
+        id: userDb._id,
+        username: userDb.username,
+        roles: userDb.roles
+      }
+      jwt.sign(payload, jwtSecret, (err, token) => {
+        res.send({
+          success: true,
+          token
+        })
+      })
     } else {
-      res.send("wrong credentials")
+      res.send({
+        success: false,
+        message: "Wrong credentials"
+      })
     }
   } else {
-    res.send("wrong credentials")
+    res.send({
+      success: false,
+      message: "Wrong credentials"
+    })
   }
 })
 
