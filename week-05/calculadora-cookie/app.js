@@ -12,7 +12,16 @@ app.set('views', path.join(__dirname, 'views'))
 app.set('view engine', 'ejs')
 
 app.get('/', (req, res) => {
-  const { num1, num2, op } = req.body
+  res.render('index', {
+    contas: req.cookies.contas
+  })
+})
+
+app.post('/calc', (req, res) => {
+  let { num1, num2, op } = req.body
+  num1 = parseInt(num1)
+  num2 = parseInt(num2)
+
   let total = 0
 
   if (op == '+') {
@@ -27,10 +36,15 @@ app.get('/', (req, res) => {
     throw 'Operação não conhecida'
   }
 
-  res.render('index')
-})
+  let contas = []
+  if ('contas' in req.cookies) {
+    contas = req.cookies.contas
+  }
 
-app.post('/calc', (req, res) => {
+  contas.push({ num1, num2, op, total })
+
+  res.cookie('contas', contas)
+
   res.redirect('/')
 })
 

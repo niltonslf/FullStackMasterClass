@@ -9,3 +9,18 @@
   <input type="text" name="num2">
   <input type="submit" value="calcular">
 </form>
+<% if (contas.length) { %>
+
+<h2>Contas</h2>
+<ul>
+  <% contas.forEach(conta => { %>
+  <li>
+    <%= conta.num1 %>
+    <%= conta.op %>
+    <%= conta.num2 %>
+    =
+    <%= conta.total %>
+  </li>
+  <% }) %>
+</ul>
+<% } %>
