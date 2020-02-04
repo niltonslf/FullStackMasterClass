@@ -1,0 +1,128 @@
+swagger: "2.0"
+info:
+  description: "This is a sample server Petstore server.  You can find out more about     Swagger at [http://swagger.io](http://swagger.io) or on [irc.freenode.net, #swagger](http://swagger.io/irc/).      For this sample, you can use the api key `special-key` to test the authorization     filters."
+  version: "1.0.0"
+  title: "Minhas séries"
+  termsOfService: "http://swagger.io/terms/"
+  contact:
+    email: "niltonrck@gmail.com"
+  license:
+    name: "Apache 2.0"
+    url: "http://www.apache.org/licenses/LICENSE-2.0.html"
+host: "localhost:3333"
+basePath: "/"
+tags:
+- name: "series"
+  description: "tudo sobre séries"
+- name: "users"
+  description: "Operações para usuários"
+schemes:
+- "https"
+- "http"
+paths:
+  /series:
+    get:
+      tags:
+      - "series"
+      summary: "Retorna todas as séries"
+      operationId: "getSerie"
+      produces:
+      - "application/json"
+      responses:
+        200:
+          description: "OK"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/Serie"
+        400:
+          description: "erro"
+      security:
+      - api_key:
+        - "restrito"
+    post:
+      tags:
+      - "series"
+      summary: "Cria uma nova série"
+      description: ""
+      operationId: "addSerie"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "Objeto necessário para adicionar uma nova série"
+        required: true
+        schema:
+          $ref: "#/definitions/Serie"
+      responses:
+        405:
+          description: "Invalid input"
+    put:
+      tags:
+      - "series"
+      summary: "Atualizar uma série existente"
+      description: ""
+      operationId: "updateSerie"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "Objeto necessário para adicionar uma nova série"
+        required: true
+        schema:
+          $ref: "#/definitions/Serie"
+      responses:
+        400:
+          description: "Invalid ID supplied"
+        404:
+          description: "Pet not found"
+        405:
+          description: "Validation exception"
+securityDefinitions:
+  api_key:
+    type: "apiKey"
+    name: "x-access-token"
+    in: "header"
+    scopes:
+      restrito: "acesso restrito"
+      admin: "admin"
+definitions:
+  Serie:
+    type: "object"
+    properties:
+      _id:
+        type: "string"
+      name:
+        type: "string"
+      status:
+        type: "string"
+  User:
+    type: "object"
+    properties:
+      id:
+        type: "integer"
+        format: "int64"
+      username:
+        type: "string"
+      firstName:
+        type: "string"
+      lastName:
+        type: "string"
+      email:
+        type: "string"
+      password:
+        type: "string"
+      phone:
+        type: "string"
+      userStatus:
+        type: "integer"
+        format: "int32"
+        description: "User Status"
+    xml:
+      name: "User"
