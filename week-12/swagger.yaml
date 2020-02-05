@@ -17,7 +17,6 @@ tags:
 - name: "users"
   description: "Operações para usuários"
 schemes:
-- "https"
 - "http"
 paths:
   /series:

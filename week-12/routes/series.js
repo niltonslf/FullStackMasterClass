@@ -1,47 +1,48 @@
-const { Router } = require("express")
-const Serie = require("../models/serie")
+const { Router } = require('express')
+const Serie = require('../models/serie')
 
-const jwt = require("jsonwebtoken")
-const jwtSecret = "!@#$%"
+const jwt = require('jsonwebtoken')
+const jwtSecret = '!@#$%'
 
 const router = Router()
 
 router.use(async (req, res, next) => {
   const token =
-    req.headers["x-access-token"] || req.body.token || req.query.token
+    req.headers['x-access-token'] || req.body.token || req.query.token
 
   if (token) {
     try {
       const payload = jwt.verify(token, jwtSecret)
 
-      if (payload.roles.includes("restrito")) {
+      if (payload.roles.includes('restrito')) {
         next()
       } else {
         res.send({
           success: false,
-          message: "You dont have permission to access this page."
+          message: 'You dont have permission to access this page.'
         })
       }
     } catch (e) {
       res.send({
         success: false,
-        message: "unauthorized"
+        message: 'unauthorized'
       })
     }
+  } else {
+    res.send({
+      success: false,
+      message: 'unauthorized'
+    })
   }
-  res.res({
-    success: false,
-    message: "unauthorized"
-  })
 })
 
-router.get("/", async (req, res) => {
+router.get('/', async (req, res) => {
   const series = await Serie.find({})
 
   res.send(series)
 })
 
-router.post("/", async (req, res) => {
+router.post('/', async (req, res) => {
   const serie = new Serie(req.body)
   try {
     await serie.save()
@@ -54,19 +55,19 @@ router.post("/", async (req, res) => {
   }
 })
 
-router.delete("/:id", async (req, res) => {
+router.delete('/:id', async (req, res) => {
   await Serie.remove({ _id: req.params.id })
   res.send({
     success: true
   })
 })
 
-router.get("/:id", async (req, res) => {
+router.get('/:id', async (req, res) => {
   const serie = await Serie.findOne({ _id: req.params.id })
   res.json(serie)
 })
 
-router.put("/:id", async (req, res) => {
+router.put('/:id', async (req, res) => {
   const serie = await Serie.findOne({ _id: req.params.id })
   const { name, status, comments } = req.body
 
