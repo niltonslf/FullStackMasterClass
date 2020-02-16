@@ -42,6 +42,12 @@ for (let i = 0; i < 300; i++) {
 
 const docDefinition = {
   content: [
+    {
+      // width: 100,
+      // height: 100,
+      fit: [200, 100],
+      image: "images/logo.png"
+    },
     { text: "Fullstack Master" },
     {
       table: {
@@ -57,6 +63,28 @@ const docDefinition = {
     },
     inativo: {
       color: "red"
+    }
+  },
+  footer: (page, pages) => {
+    return {
+      columns: [
+        "Este documento é parte integrante do full stack master",
+        {
+          alignment: "right",
+          text: [
+            {
+              text: page.toString(),
+              italics: true
+            },
+            " de ",
+            {
+              text: pages.toString(),
+              italics: true
+            }
+          ]
+        }
+      ],
+      margin: [40, 0]
     }
   }
 }
