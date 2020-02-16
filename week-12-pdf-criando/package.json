@@ -1,0 +1,9 @@
+{
+  "name": "week-12-pdf-criando",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "pdfmake": "^0.1.64"
+  }
+}
