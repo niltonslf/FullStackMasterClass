@@ -1,27 +1,27 @@
-const express = require('express')
-const bodyParser = require('body-parser')
-const jwt = require('jsonwebtoken')
-const cors = require('cors')
+const express = require("express")
+const bodyParser = require("body-parser")
+const jwt = require("jsonwebtoken")
+const cors = require("cors")
 
-const swaggerUi = require('swagger-ui-express')
-const YAML = require('yamljs')
-const swaggerDoc = YAML.load('./swagger.yaml')
+const swaggerUi = require("swagger-ui-express")
+const YAML = require("yamljs")
+const swaggerDoc = YAML.load("./swagger.yaml")
 
-const User = require('./models/user')
-const jwtSecret = '!@#$%'
+const User = require("./models/user")
+const jwtSecret = "!@#$%"
 
-const series = require('./routes/series')
-const users = require('./routes/users')
+const series = require("./routes/series")
+const users = require("./routes/users")
 
 const app = express()
 
-app.use('/docs', swaggerUi.serve, swaggerUi.setup(swaggerDoc))
+app.use("/docs", swaggerUi.serve, swaggerUi.setup(swaggerDoc))
 app.use(cors())
 app.use(bodyParser.json())
-app.use('/series', series)
-app.use('/users', users)
+app.use("/series", series)
+app.use("/users", users)
 
-app.post('/auth', async (req, res) => {
+app.post("/auth", async (req, res) => {
   const { username, password } = req.body
 
   const userDb = await User.findOne({ username })
@@ -42,13 +42,13 @@ app.post('/auth', async (req, res) => {
     } else {
       res.send({
         success: false,
-        message: 'Wrong credentials'
+        message: "Wrong credentials"
       })
     }
   } else {
     res.send({
       success: false,
-      message: 'Wrong credentials'
+      message: "Wrong credentials"
     })
   }
 })
