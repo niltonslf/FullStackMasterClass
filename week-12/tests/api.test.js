@@ -3,7 +3,7 @@ const expect = require("chai").expect
 
 const mongoose = require("mongoose")
 const mongo =
-  "mongodb+srv://niltonslf:mongo123@cluster0-hakdt.mongodb.net/test-series?retryWrites=true&w=majority"
+  "mongodb://localhost:27017/test-series?retryWrites=true&w=majority"
 const User = require("../models/user")
 
 const app = require("../app")
@@ -52,6 +52,21 @@ describe("Testing /auth", () => {
       .end((err, res) => {
         expect(err).be.null
         expect(res.body.token).be.string
+        done()
+      })
+  })
+
+  it("Should return an error to auth", done => {
+    request(app)
+      .post("/auth")
+      .send({})
+      .set("Accept", "application/json")
+      .expect("Content-Type", /json/)
+      .expect(200)
+      .end((err, res) => {
+        if (err) return done(err)
+        expect(err).be.null
+        expect(res.body.message).be.string
         done()
       })
   })
