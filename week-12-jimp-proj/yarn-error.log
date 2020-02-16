@@ -1,0 +1,41 @@
+Arguments: 
+  /home/niltonslf/.nvm/versions/node/v10.18.1/bin/node /usr/bin/yarn add jump express ejs
+
+PATH: 
+  /home/niltonslf/.local/bin:/home/niltonslf/.nvm/versions/node/v10.18.1/bin:/home/niltonslf/.zplugin/polaris/bin:/home/niltonslf/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/home/niltonslf/Android/Sdk/tools:/home/niltonslf/Android/Sdk/platform-tools
+
+Yarn version: 
+  1.21.1
+
+Node version: 
+  10.18.1
+
+Platform: 
+  linux x64
+
+Trace: 
+  Error: https://github.com/afriggeri/node-charm/tarball/master: Request failed "404 Not Found"
+      at ResponseError.ExtendableBuiltin (/usr/lib/node_modules/yarn/lib/cli.js:696:66)
+      at new ResponseError (/usr/lib/node_modules/yarn/lib/cli.js:802:124)
+      at Request.<anonymous> (/usr/lib/node_modules/yarn/lib/cli.js:67017:16)
+      at Request.emit (events.js:198:13)
+      at Request.module.exports.Request.onRequestResponse (/usr/lib/node_modules/yarn/lib/cli.js:141542:10)
+      at ClientRequest.emit (events.js:203:15)
+      at HTTPParser.parserOnIncomingClient [as onIncoming] (_http_client.js:556:21)
+      at HTTPParser.parserOnHeadersComplete (_http_common.js:109:17)
+      at TLSSocket.socketOnData (_http_client.js:442:20)
+      at TLSSocket.emit (events.js:198:13)
+
+npm manifest: 
+  {
+    "name": "week-12-jimp-proj",
+    "version": "1.0.0",
+    "main": "index.js",
+    "license": "MIT"
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile
