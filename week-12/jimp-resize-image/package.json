@@ -1,0 +1,9 @@
+{
+  "name": "jimp-resize-image",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "jimp": "^0.9.3"
+  }
+}
