@@ -119,5 +119,18 @@ describe("Testing Rest API", () => {
           done()
         })
     })
+
+    it("Should return a series", done => {
+      request(app)
+        .get("/series")
+        .set("x-access-token", token)
+        .expect("Content-Type", /json/)
+        .expect(200)
+        .end((err, res) => {
+          expect(err).be.null
+          expect(res.body).not.empty
+          done()
+        })
+    })
   })
 })
