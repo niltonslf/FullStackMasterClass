@@ -10,5 +10,18 @@
       <input type="file" name="file" id="" />
       <input type="submit" value="Enviar" />
     </form>
+
+    <hr />
+
+    <table>
+      <% arquivos.forEach(arquivo => { %>
+      <tr>
+        <td><%-arquivo.name%></td>
+        <td>
+          <a href="/ver/<%-arquivo.id%>">Ver arquivo</a>
+        </td>
+      </tr>
+      <% }) %>
+    </table>
   </body>
 </html>
