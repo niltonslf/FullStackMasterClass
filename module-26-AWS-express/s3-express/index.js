@@ -19,16 +19,29 @@ app.set("view engine", "ejs")
 app.set("views", path.join(__dirname, "views"))
 
 const s3Config = {
-  accessKeyId: process.env.ACCESS_KEY_ID,
-  secretAccessKey: process.env.SECRET_ACCESS_KEY,
-  region: process.env.AWS_DEFAULT_REGION,
-  bucket: "fullstack-master-nslf",
+  accessKeyId: process.env.S3_ACCESS_KEY,
+  secretAccessKey: process.env.S3_SECRET_ACCESS_KEY,
+  region: process.env.S3_REGION,
+  bucket: process.env.S3_BUCKET,
 }
 
-const sequelize = new Sequelize("arquivos", "admin", "admin", {
-  host: "localhost",
-  dialect: "mysql",
-})
+const dbConfig = {
+  hostname: process.env.RDS_HOSTNAME,
+  port: process.env.RDS_PORT,
+  dbName: process.env.RDS_DB_NAME,
+  username: process.env.RDS_USERNAME,
+  password: process.env.RDS_PASSWORD,
+}
+
+const sequelize = new Sequelize(
+  dbConfig.dbName,
+  dbConfig.username,
+  dbConfig.password,
+  {
+    host: dbConfig.hostname,
+    dialect: "mysql",
+  }
+)
 
 const Arquivo = sequelize.define("arquivo", {
   name: {
